@@ -1,10 +1,9 @@
 {
   "name": "language-jsoniq",
-  "description": "JSONiq support in Atom",
-  "version": "0.0.1",
+  "description": "JSONiq & XQuery support in Atom",
+  "version": "0.0.0",
   "engines": {
-    "atom": "*",
-    "node": "*"
+    "atom": "*"
   },
   "homepage": "http://wcandillon.github.io/language-jsoniq",
   "repository": {
