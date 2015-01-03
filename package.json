@@ -15,7 +15,8 @@
   "bugs": {
     "url": "https://github.com/wcandillon/language-jsoniq/issues"
   },
+  "main": "./lib/main",
   "dependencies": {
-    "xqlint": "^0.2.0"
+    "xqlint": "^0.2.1"
   }
 }
