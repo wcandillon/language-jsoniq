@@ -2,6 +2,12 @@
   "name": "language-jsoniq",
   "description": "JSONiq & XQuery support in Atom",
   "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "William Candillon",
+    "email": "wcandillon@gmail.com",
+    "url": "http://github.com/wcandillon"
+  },
   "engines": {
     "atom": "*"
   },
@@ -16,6 +22,7 @@
   },
   "main": "./lib/main",
   "dependencies": {
+    "lodash": "^2.4.1",
     "xqlint": "^0.2.1"
   }
 }

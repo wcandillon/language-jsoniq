@@ -1,0 +1,33 @@
+@import 'ui-variables';
+
+.xqlint-error-line {
+  background-color: fade(@background-color-error, 20%);
+}
+
+.xqlint-warning-line {
+  background-color: fade(@background-color-warning, 20%);
+}
+
+.xqlint-errors {
+  text-align: left;
+}
+
+.editor {
+  .gutter {
+    .xqlint-error-line-number {
+      color: @text-color-error !important;
+      opacity: 1;
+      &:hover {
+        background-color: @background-color-highlight;
+      }
+    }
+
+    .xqlint-warning-line-number {
+      color: @text-color-warning !important;
+      opacity: 1;
+      &:hover {
+        background-color: @background-color-highlight;
+      }
+    }
+  }
+}
