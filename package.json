@@ -2,7 +2,7 @@
   "name": "language-jsoniq",
   "description": "JSONiq & XQuery support in Atom",
   "version": "0.3.0",
-  "private": true,
+  "linter-package": true,
   "author": {
     "name": "William Candillon",
     "email": "wcandillon@gmail.com",
