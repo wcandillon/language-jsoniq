@@ -1,0 +1,74 @@
+'.source.jq':
+  'for':
+    'prefix': 'for'
+    'body': 'for $${1:item} in ${2:expr}'
+  'return':
+    'prefix': 'return'
+    'body': 'return ${1:expr}'
+  'import':
+    'prefix': 'import'
+    'body': 'import module namespace ${1:ns} = "${2:http://www.example.com/}";'
+  'some':
+    'prefix': 'some'
+    'body': 'some $${1:varname} in ${2:expr} satisfies ${3:expr}'
+  'every':
+    'prefix': 'every'
+    'body': 'every $${1:varname} in ${2:expr} satisfies ${3:expr}'
+  'if':
+    'prefix': 'if'
+    'body': 'if(${1:true}) then ${2:expr} else ${3:true}'
+  'switch':
+    'prefix': 'switch'
+    'body': 'switch(${1:"foo"})\ncase ${2:"foo"}\nreturn ${3:true}\ndefault return ${4:false}'
+  'try':
+    'prefix': 'try'
+    'body': 'try { ${1:expr} } catch ${2:*} { ${3:expr} }'
+  'tumbling':
+    'prefix': 'tumbling'
+    'body': '
+    	for tumbling window $${1:varname} in ${2:expr}\nstart at $${3:start} when ${4:expr}\nend at $${5:end} when ${6:expr}\nreturn ${7:expr}'
+  'sliding':
+    'prefix': 'tumbling'
+    'body': 'for sliding window $${1:varname} in ${2:expr}\nstart at $${3:start} when ${4:expr}\nend at $${5:end} when ${6:expr}\nreturn ${7:expr}'
+  'let':
+    'prefix': 'let'
+    'body': 'let $${1:varname} := ${2:expr}'
+  'group':
+    'prefix': 'group'
+    'body': 'group by $${1:varname} := ${2:expr}'
+  'order':
+    'prefix': 'order'
+    'body': 'order by $${1:expr} := ${2:descending}'
+  'stable':
+    'prefix': 'stable'
+    'body': 'stable order by $${1:expr}'
+  'count':
+    'prefix': 'count'
+    'body': 'count $${1:varname}'
+  'ordered':
+    'prefix': 'ordered'
+    'body': 'ordered { ${1:expr} }'
+  'unordered':
+    'prefix': 'unordered'
+    'body': 'unordered { ${1:expr} }'
+  'treat':
+    'prefix': 'treat'
+    'body': 'treat as ${1:expr}'
+  'castable':
+    'prefix': 'castable'
+    'body': 'castable as ${1:atomicType}'
+  'cast':
+    'prefix': 'cast'
+    'body': 'cast as ${1:atomicType}'
+  'typeswitch':
+    'prefix': 'typeswitch'
+    'body': 'typeswitch(${1:expr})\ncase ${2:type}  return ${3:expr}\ndefault return ${4:expr}'
+  'var':
+    'prefix': 'var'
+    'body': 'declare variable $${1:varname} := ${2:expr};'
+  'fn':
+    'prefix': 'fn'
+    'body': 'declare function ${1:ns}:${2:name}(){\n  ${3:expr}\n};'
+  'module':
+    'prefix': 'module'
+    'body': 'module namespace ${1:ns} = "${2:http://www.example.com}";'
