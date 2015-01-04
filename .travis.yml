@@ -1,6 +1,11 @@
 language: objective-c
 
-script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
+before_script:
+  - sudo npm install gulp -g
+
+script:
+  - gulp
+  - 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
 
 git:
   depth: 10
