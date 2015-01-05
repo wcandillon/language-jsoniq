@@ -1,7 +1,7 @@
 {
   "name": "language-jsoniq",
   "description": "JSONiq & XQuery support in Atom",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "author": {
     "name": "William Candillon",
