@@ -1,11 +1,13 @@
 @import "ui-variables";
-atom-text-editor::shadow {
-.atom-xqlint-error {
-  color: @text-color-error;
-}
 
-.atom-xqlint-warning {
-  color: @text-color-warning;
+atom-text-editor::shadow {
+  .atom-xqlint-error {
+    color: @text-color-error;
+  }
+
+  .atom-xqlint-warning {
+    color: @text-color-warning;
+  }
 }
 
 .atom-xqlint-pane {
@@ -23,5 +25,4 @@ atom-text-editor::shadow {
   span:hover {
     text-decoration: underline;
   }
-}
 }
