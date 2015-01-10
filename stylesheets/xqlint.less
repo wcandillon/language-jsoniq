@@ -1,33 +1,28 @@
-@import 'ui-variables';
+@import "ui-variables";
 
-.xqlint-error-line {
-  background-color: fade(@background-color-error, 20%);
+atom-text-editor::shadow {
+  .atom-xqlint-error {
+    color: @text-color-error;
+  }
+
+  .atom-xqlint-warning {
+    color: @text-color-warning;
+  }
 }
 
-.xqlint-warning-line {
-  background-color: fade(@background-color-warning, 20%);
-}
+.atom-xqlint-pane {
+  font-size:11px;
+  line-height:22px;
+  color: @text-color;
+  font-weight: normal;
+  background-color: @tool-panel-background-color;
+  overflow:auto;
+  max-height: 80px;
+  border-top: 1px solid @tool-panel-border-color;
+  padding: 0 12.5px;
+  cursor:pointer;
 
-.xqlint-errors {
-  text-align: left;
-}
-
-.editor {
-  .gutter {
-    .xqlint-error-line-number {
-      color: @text-color-error !important;
-      opacity: 1;
-      &:hover {
-        background-color: @background-color-highlight;
-      }
-    }
-
-    .xqlint-warning-line-number {
-      color: @text-color-warning !important;
-      opacity: 1;
-      &:hover {
-        background-color: @background-color-highlight;
-      }
-    }
+  span:hover {
+    text-decoration: underline;
   }
 }
