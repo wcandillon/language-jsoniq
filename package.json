@@ -1,6 +1,8 @@
 {
   "name": "language-jsoniq",
   "description": "JSONiq & XQuery support in Atom",
+  "linter-package": true,
+  "activationEvents": [],
   "version": "0.10.0",
   "private": true,
   "author": {
