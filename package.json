@@ -3,7 +3,7 @@
   "description": "JSONiq & XQuery support in Atom",
   "linter-package": true,
   "activationEvents": [],
-  "version": "0.9.0",
+  "version": "0.10.0",
   "private": true,
   "author": {
     "name": "William Candillon",
