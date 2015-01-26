@@ -9,7 +9,7 @@
     "url": "http://github.com/wcandillon"
   },
   "engines": {
-    "atom": "*"
+    "atom": ">=0.174.0"
   },
   "homepage": "http://wcandillon.github.io/language-jsoniq",
   "repository": {
