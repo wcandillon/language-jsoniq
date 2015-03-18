@@ -38,7 +38,7 @@
     'body': 'group by $${1:varname} := ${2:expr}${3}'
   'order':
     'prefix': 'order'
-    'body': 'order by $${1:expr} := ${2:descending}${3}'
+    'body': 'order by $${1:expr} ${2:descending}${3}'
   'stable':
     'prefix': 'stable'
     'body': 'stable order by $${1:expr}${2}'
