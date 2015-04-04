@@ -32,5 +32,12 @@
     "gulp": "^3.8.10",
     "gulp-jshint": "^1.9.0",
     "gulp-load-plugins": "^0.8.0"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getAutocomplete"
+      }
+    }
   }
 }
