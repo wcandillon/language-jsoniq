@@ -1,0 +1,517 @@
+'scopeName': 'source.jq'
+'fileTypes': [
+  'jq'
+]
+'firstLineMatch': '^\\bxquery version\\b.*'
+'foldingStartMarker': '^\\s*(<[^!?%/](?!.+?(/>|</.+?>))|<[!%]--(?!.+?--%?>)|<%[!]?(?!.+?%>))|(declare|.*\\{\\s*(//.*)?$)'
+'foldingStopMarker': '^\\s*(</[^>]+>|[/%]>|-->)\\s*$|(.*\\}\\s*;?\\s*|.*;)'
+'name': 'XQuery'
+'patterns': [
+  {
+    'include': '#Xml'
+  }
+  {
+    'include': '#entity'
+  }
+  {
+    'include': '#bare-ampersand'
+  }
+  {
+    'begin': '<!\\[CDATA\\['
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.xml'
+    'end': ']]>'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.xml'
+    'name': 'string.unquoted.cdata.xml'
+  }
+  {
+    'match': '^xquery version .*;$'
+    'name': 'keyword.control.import.xquery'
+  }
+  {
+    'match': '\\b(?i:(\\d+\\.\\d*(e[\\-\\+]?\\d+)?))(?=[^a-zA-Z_])'
+    'name': 'constant.numeric.float.xquery'
+  }
+  {
+    'match': '(?<=[^0-9a-zA-Z_])(?i:(\\.\\d+(e[\\-\\+]?\\d+)?))'
+    'name': 'constant.numeric.float.xquery'
+  }
+  {
+    'match': '\\b(?i:(\\d+e[\\-\\+]?\\d+))'
+    'name': 'constant.numeric.float.xquery'
+  }
+  {
+    'match': '\\b([1-9]+[0-9]*|0)'
+    'name': 'constant.numeric.integer.decimal.xquery'
+  }
+  {
+    'match': '\\b(import|module|schema)\\b'
+    'name': 'keyword.control.import.xquery'
+  }
+  {
+    'begin': '\\(:'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.xquery'
+    'end': ':\\)'
+    'name': 'comment.block.xquery'
+    'patterns': [
+      {
+        'include': '#block_comment'
+      }
+    ]
+  }
+  {
+    'comment': 'http://www.w3.org/TR/xpath-datamodel/#types'
+    'match': '(?<![:\\-_a-zA-Z0-9])((xs:)(string|boolean|decimal|float|double|duration|dateTime|time|date|gYearMonth|gYear|gMonthDay|gDay|gMonth|hexBinary|base64Binary|anyURI|QName|NOTATION|anyAtomicType|anyType|anySimpleType|untypedAtomic|dayTimeDuration|yearMonthDuration|integer|nonPositiveInteger|negativeInteger|long|int|short|byte|nonNegativeInteger|unsignedLong|unsignedInt|unsignedShort|unsignedByte|positiveInteger|ENTITY|ID|NMTOKEN|language|NCName|Name|token|normalizedString))(?![:\\-_a-zA-Z0-9])'
+    'name': 'support.type.xquery'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.variable.xquery'
+    'match': '((\\$)(?:([\\-_a-zA-Z0-9]+)((:)))?([\\-_a-zA-Z0-9]+))'
+    'name': 'variable.other.xquery'
+  }
+  {
+    'match': '/(child|descendant|attribute|self|descendant-or-self|following-sibling|following|parent|ancestor|preceding-sibling|preceding|ancestor-or-self)::'
+    'name': 'support.constant.xquery'
+  }
+  {
+    'begin': '(declare)\\s+(private\\s+)?(function)\\s+((?:([\\-_a-zA-Z0-9]+):)?([\\-_a-zA-Z0-9]+))\\s*\\('
+    'captures':
+      '1':
+        'name': 'keyword.control.declare.xquery'
+      '2':
+        'name': 'storage.modifier.xquery'
+      '3':
+        'name': 'storage.type.function.xquery'
+      '4':
+        'name': 'entity.name.function.xquery'
+    'end': '\\)'
+    'name': 'meta.function.xquery'
+    'patterns': [
+      {
+        'include': '#function_parameters'
+      }
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.xquery'
+      '2':
+        'name': 'storage.type.variable.xquery'
+    'match': '(declare)\\s+(variable)'
+    'name': 'meta.variable.xquery'
+  }
+  {
+    'match': '\\b(declare|namespace|preserve|no-preserve|inherit|no-inherit|strip|boundary-space|default|instance|option|copy-namespaces|xdmp:mapping)\\b'
+    'name': 'keyword.other.prolog.xquery'
+  }
+  {
+    'match': '(?<![:\\-_a-zA-Z0-9])(of|as|by|in|at|or|and)(?![:\\-_a-zA-Z0-9])'
+    'name': 'keyword.operator.logical.xquery'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.flow.xquery'
+    'match': '(?<![:\\-_a-zA-Z0-9])(for|let|return|where|if|then|else|order by|satisfies|every)(?![:\\-_a-zA-Z0-9])'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'support.type.xquery'
+    'match': '(?<![:\\-_a-zA-Z0-9])(element|attribute|document|document-node|schema-element|schema-attribute|processing-instruction|comment|text|node)(?![:\\-_a-zA-Z0-9])'
+  }
+  {
+    'match': ':='
+    'name': 'keyword.operator.assignment.xquery'
+  }
+  {
+    'match': '(?<![:\\-_a-zA-Z0-9])(\\+|-|<=?|>=?|eq|ne|lt|le|ge|gt|\\*|div|idiv|mod)(?![:\\-_a-zA-Z0-9])'
+    'name': 'keyword.operator.arithmetic.xquery'
+  }
+  {
+    'match': '(?<![:\\-_a-zA-Z0-9])((fn:)?(abs|adjust-date-to-timezone|adjust-date-to-timezone|adjust-dateTime-to-timezone|adjust-dateTime-to-timezone|adjust-time-to-timezone|adjust-time-to-timezone|avg|base-uri|base-uri|boolean|ceiling|codepoint-equal|codepoints-to-string|collection|collection|compare|concat|contains|count|current-date|current-dateTime|current-time|data|dateTime|day-from-date|day-from-dateTime|days-from-duration|deep-equal|default-collation|distinct-values|distinct-values|doc|doc-available|document-uri|empty|ends-with|error|escape-uri|exactly-one|exists|false|floor|hours-from-dateTime|hours-from-duration|hours-from-time|id|idref|implicit-timezone|in-scope-prefixes|index-of|insert-before|lang|last|local-name|local-name-from-QName|lower-case|matches|max|min|minutes-from-dateTime|minutes-from-duration|minutes-from-time|month-from-date|month-from-dateTime|months-from-duration|name|namespace-uri|namespace-uri-for-prefix|namespace-uri-from-QName|nilled|node-name|normalize-space|normalize-unicode|not|number|one-or-more|position|prefix-from-QName|QName|remove|replace|resolve-QName|resolve-uri|reverse|root|round|round-half-to-even|seconds-from-dateTime|seconds-from-duration|seconds-from-time|starts-with|static-base-uri|string|string-join|string-length|string-to-codepoints|subsequence|substring|substring-after|substring-before|sum|timezone-from-date|timezone-from-dateTime|timezone-from-time|tokenize|trace|translate|true|unordered|upper-case|year-from-date|year-from-dateTime|years-from-duration|zero-or-one))(?=\\s*\\()'
+    'name': 'support.function.builtin.xquery'
+  }
+  {
+    'match': '\\b(declare|module|namespace|element|variable|base-uri|collation|import|construction|ordering|ordered|unordered|order|empty|greatest|least|function|preserve|no-preserve|inherit|no-inherit|strip|boundary-space|default|instance|option|copy-namespaces)\\b'
+    'name': 'keyword.other.prolog.xquery'
+  }
+  {
+    'match': '(?<![:\\-_a-zA-Z0-9])(xdmp:(access|add-response-header|add64|amp|amp-roles|and64|apply|architecture|base64-decode|base64-encode|binary-decode|can-grant-roles|castable-as|collation-canonical-uri|collection-delete|collection-locks|collection-properties|crypt|current-last|current-position|database|database-backup|database-backup-cancel|database-backup-purge|database-backup-status|database-backup-validate|database-forests|database-name|database-restore|database-restore-cancel|database-restore-status|database-restore-validate|databases|default-collections|default-permissions|describe|diacritic-less|directory|directory-create|directory-delete|directory-locks|directory-properties|document-add-collections|document-add-permissions|document-add-properties|document-assign|document-delete|document-forest|document-get|document-get-collections|document-get-permissions|document-get-properties|document-get-quality|document-insert|document-load|document-locks|document-properties|document-remove-collections|document-remove-permissions|document-remove-properties|document-set-collections|document-set-permissions|document-set-properties|document-set-property|document-set-quality|elapsed-time|element-content-type|email|encoding-language-detect|estimate|eval|eval-in|excel-convert|exists|filesystem-directory|filesystem-directory-create|filesystem-file|forest|forest-backup|forest-clear|forest-counts|forest-databases|forest-name|forest-restart|forest-restore|forest-rollback|forest-status|forests|format-number|from-json|function|function-module|function-name|get|get-current-roles|get-current-user|get-request-body|get-request-client-address|get-request-client-certificate|get-request-field|get-request-field-content-type|get-request-field-filename|get-request-field-names|get-request-header|get-request-header-names|get-request-method|get-request-path|get-request-protocol|get-request-url|get-request-user|get-request-username|get-response-code|get-response-encoding|get-server-field|get-server-field-names|get-session-field|get-session-field-names|get-url-rewriter-path|group|group-hosts|group-name|group-servers|groups|has-privilege|hash32|hash64|hex-to-integer|host|host-name|host-status|hosts|http-delete|http-get|http-head|http-options|http-post|http-put|integer-to-hex|integer-to-octal|invoke|invoke-in|key-from-QName|load|lock-acquire|lock-for-update|lock-release|log|log-level|login|logout|lshift64|md5|merge|merge-cancel|merging|modules-database|modules-root|mul64|node-database|node-delete|node-insert-after|node-insert-before|node-insert-child|node-kind|node-replace|node-uri|not64|octal-to-integer|or64|parse-dateTime|parse-yymmdd|path|pdf-convert|permission|plan|platform|powerpoint-convert|pretty-print|privilege|privilege-roles|product-edition|QName-from-key|query-meters|query-trace|quote|random|redirect-response|request|request-cancel|request-status|request-timestamp|restart|rethrow|role|role-roles|rshift64|save|schema-database|security-assert|security-database|server|server-name|server-status|servers|set|set-request-time-limit|set-response-code|set-response-content-type|set-response-encoding|set-server-field|set-server-field-privilege|set-session-field|shutdown|sleep|spawn|spawn-in|step64|strftime|subbinary|tidy|to-json|trace|triggers-database|unpath|unquote|uri-content-type|uri-format|uri-is-file|url-decode|url-encode|user|user-last-login|user-roles|value|version|with-namespaces|word-convert|x509-certificate-extract|xor64|xquery-version|xslt-eval|xslt-invoke|zip-create|zip-get|zip-manifest))(?=\\s*\\()'
+    'name': 'support.function.marklogic.xquery'
+  }
+  {
+    'match': '(?<![:\\-_a-zA-Z0-9])(xdmp:([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*))'
+    'name': 'invalid.function.marklogic'
+  }
+  {
+    'include': '#string'
+  }
+  {
+    'begin': '(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.begin.xquery'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.end.xquery'
+    'name': 'meta'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  }
+]
+'repository':
+  'EntityDecl':
+    'begin': '(<!)(ENTITY)\\s+(%\\s+)?([:a-zA-Z_][:a-zA-Z0-9_.-]*)(\\s+(?:SYSTEM|PUBLIC)\\s+)?'
+    'captures':
+      '1':
+        'name': 'punctuation.definition.tag.xml'
+      '2':
+        'name': 'keyword.entity.xml'
+      '3':
+        'name': 'punctuation.definition.entity.xml'
+      '4':
+        'name': 'variable.entity.xml'
+      '5':
+        'name': 'keyword.entitytype.xml'
+    'end': '(>)'
+    'patterns': [
+      {
+        'include': '#xmlString'
+      }
+    ]
+  'Xml':
+    'patterns': [
+      {
+        'begin': '(<\\?)\\s*([-_a-zA-Z0-9]+)'
+        'captures':
+          '1':
+            'name': 'punctuation.definition.tag.xml'
+          '2':
+            'name': 'entity.name.tag.xml'
+        'end': '(\\?>)'
+        'name': 'meta.tag.preprocessor.xml'
+        'patterns': [
+          {
+            'match': ' ([a-zA-Z-]+)'
+            'name': 'entity.other.attribute-name.xml'
+          }
+          {
+            'include': '#doublequotedXmlString'
+          }
+          {
+            'include': '#singlequotedXmlString'
+          }
+        ]
+      }
+      {
+        'begin': '(<!)(DOCTYPE)\\s+([:a-zA-Z_][:a-zA-Z0-9_.-]*)'
+        'captures':
+          '1':
+            'name': 'punctuation.definition.tag.xml'
+          '2':
+            'name': 'keyword.doctype.xml'
+          '3':
+            'name': 'variable.documentroot.xml'
+        'end': '\\s*(>)'
+        'name': 'meta.tag.sgml.doctype.xml'
+        'patterns': [
+          {
+            'include': '#internalSubset'
+          }
+        ]
+      }
+      {
+        'begin': '<[!%]--'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.xml'
+        'end': '--%?>'
+        'name': 'comment.block.xml'
+      }
+      {
+        'begin': '(<)((?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+))(?=(\\s[^>]*)?></\\2>)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.tag.xml'
+          '3':
+            'name': 'entity.name.tag.namespace.xml'
+          '4':
+            'name': 'entity.name.tag.xml'
+          '5':
+            'name': 'punctuation.separator.namespace.xml'
+          '6':
+            'name': 'entity.name.tag.localname.xml'
+        'end': '(>(<))/(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)(>)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.tag.xml'
+          '2':
+            'name': 'meta.scope.between-tag-pair.xml'
+          '3':
+            'name': 'entity.name.tag.namespace.xml'
+          '4':
+            'name': 'entity.name.tag.xml'
+          '5':
+            'name': 'punctuation.separator.namespace.xml'
+          '6':
+            'name': 'entity.name.tag.localname.xml'
+          '7':
+            'name': 'punctuation.definition.tag.xml'
+        'name': 'meta.tag.no-content.xml'
+        'patterns': [
+          {
+            'include': '#tagStuff'
+          }
+        ]
+      }
+      {
+        'begin': '(?x:\n                        (<)\n                        (\n                          (?:\n                            ([-_a-zA-Z0-9]+)(:)\n                          )?\n                          ([-_a-zA-Z0-9:]+)\n                        )\n                        (?=[^>]*/>)\n\t\t\t\t    )'
+        'end': '/>'
+        'name': 'meta.tag.self-closing.xml'
+        'patterns': [
+          {
+            'include': '#tagStuff'
+          }
+        ]
+      }
+      {
+        'begin': '(?x:\n                      (<)\n                      (\n                        (?:\n                          ([-_a-zA-Z0-9]+)(:)\n                        )?\n                        ([-_a-zA-Z0-9:]+)\n                      )\n                    )'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.tag.xml'
+          '2':
+            'name': 'entity.name.tag.namespace.xml'
+          '3':
+            'name': 'entity.name.tag.xml'
+          '4':
+            'name': 'punctuation.separator.namespace.xml'
+          '5':
+            'name': 'entity.name.tag.localname.xml'
+        'end': '(</\\2>)'
+        'endCaptures':
+          '1':
+            'name': 'entity.name.tag.xml'
+        'name': 'meta.tag.xml'
+        'patterns': [
+          {
+            'include': '#tagStuff'
+          }
+          {
+            'include': '#Xml'
+          }
+          {
+            'include': '#xml_content'
+          }
+        ]
+      }
+    ]
+  'bare-ampersand':
+    'match': '&'
+    'name': 'invalid.illegal.bad-ampersand.xml'
+  'block_comment':
+    'begin': '\\(:'
+    'end': ':\\)'
+    'patterns': [
+      {
+        'include': '#block_comment'
+      }
+    ]
+  'code_block':
+    'begin': '\\{'
+    'end': '\\}'
+    'name': 'meta.code-block.xquery'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'doublequotedString':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.xml'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.xml'
+    'name': 'string.quoted.double.xquery'
+    'patterns': [
+      {
+        'include': '#entity'
+      }
+      {
+        'include': '#bare-ampersand'
+      }
+    ]
+  'doublequotedXmlString':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.xml'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.xml'
+    'name': 'string.quoted.double.xquery'
+    'patterns': [
+      {
+        'include': '#entity'
+      }
+      {
+        'include': '#bare-ampersand'
+      }
+      {
+        'include': '#code_block'
+      }
+    ]
+  'entity':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.xml'
+      '3':
+        'name': 'punctuation.definition.constant.xml'
+    'match': '(&)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)'
+    'name': 'constant.character.entity.xml'
+  'function_call':
+    'begin': '[\\-_a-zA-Z0-9]+:[\\-_a-zA-Z0-9]+(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.parameters.begin.xquery'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.parameters.end.xquery'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+      {
+        'include': '#function_call'
+      }
+    ]
+  'function_parameters':
+    'match': '\\$([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*)'
+    'name': 'variable.parameter.xquery'
+  'internalSubset':
+    'begin': '(\\[)'
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.xml'
+    'end': '(\\])'
+    'name': 'meta.internalsubset.xml'
+    'patterns': [
+      {
+        'include': '#EntityDecl'
+      }
+      {
+        'include': '#parameterEntity'
+      }
+    ]
+  'parameterEntity':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.xml'
+      '3':
+        'name': 'punctuation.definition.constant.xml'
+    'match': '(%)([:a-zA-Z_][:a-zA-Z0-9_.-]*)(;)'
+    'name': 'constant.character.parameter-entity.xml'
+  'singlequotedString':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.xml'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.xml'
+    'name': 'string.quoted.single.xquery'
+    'patterns': [
+      {
+        'include': '#entity'
+      }
+      {
+        'include': '#bare-ampersand'
+      }
+    ]
+  'singlequotedXmlString':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.xml'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.xml'
+    'name': 'string.quoted.single.xquery'
+    'patterns': [
+      {
+        'include': '#entity'
+      }
+      {
+        'include': '#bare-ampersand'
+      }
+      {
+        'include': '#code_block'
+      }
+    ]
+  'string':
+    'patterns': [
+      {
+        'include': '#doublequotedString'
+      }
+      {
+        'include': '#singlequotedString'
+      }
+    ]
+  'tagStuff':
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'entity.other.attribute-name.namespace.xml'
+          '2':
+            'name': 'entity.other.attribute-name.xml'
+          '3':
+            'name': 'punctuation.separator.namespace.xml'
+          '4':
+            'name': 'entity.other.attribute-name.localname.xml'
+        'match': ' (?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9]+)='
+      }
+      {
+        'include': '#xmlString'
+      }
+    ]
+  'xmlString':
+    'patterns': [
+      {
+        'include': '#doublequotedXmlString'
+      }
+      {
+        'include': '#singlequotedXmlString'
+      }
+    ]
+  'xml_content':
+    'begin': '(?<=>)(?=[^<]+)'
+    'end': '(?=<)'
+    'name': 'meta.xml-content.xquery'
+    'patterns': [
+      {
+        'include': '#code_block'
+      }
+    ]
