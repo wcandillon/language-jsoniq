@@ -32,10 +32,6 @@
     'name': 'string.unquoted.cdata.xml'
   }
   {
-    'match': '^xquery version .*;$'
-    'name': 'keyword.control.import.xquery'
-  }
-  {
     'match': '\\b(?i:(\\d+\\.\\d*(e[\\-\\+]?\\d+)?))(?=[^a-zA-Z_])'
     'name': 'constant.numeric.float.xquery'
   }

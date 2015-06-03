@@ -28,10 +28,6 @@
     'name': 'string.unquoted.cdata.xml'
   }
   {
-    'match': '^xquery version .*;$'
-    'name': 'keyword.control.import.xquery'
-  }
-  {
     'match': '\\b(?i:(\\d+\\.\\d*(e[\\-\\+]?\\d+)?))(?=[^a-zA-Z_])'
     'name': 'constant.numeric.float.xquery'
   }
@@ -431,24 +427,6 @@
         'name': 'punctuation.definition.constant.xml'
     'match': '(%)([:a-zA-Z_][:a-zA-Z0-9_.-]*)(;)'
     'name': 'constant.character.parameter-entity.xml'
-  'singlequotedString':
-    'begin': '\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.xml'
-    'end': '\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.xml'
-    'name': 'string.quoted.single.xquery'
-    'patterns': [
-      {
-        'include': '#entity'
-      }
-      {
-        'include': '#bare-ampersand'
-      }
-    ]
   'singlequotedXmlString':
     'begin': '\''
     'beginCaptures':
