@@ -108,7 +108,7 @@
     'name': 'meta.variable.xquery'
   }
   {
-    'match': '\\b(declare|namespace|preserve|no-preserve|inherit|no-inherit|strip|boundary-space|default|instance|option|copy-namespaces|xdmp:mapping)\\b'
+    'match': '\\b(declare|namespace|preserve|no-preserve|inherit|no-inherit|strip|boundary-space|default|instance|option|copy-namespaces)\\b'
     'name': 'keyword.other.prolog.xquery'
   }
   {
@@ -142,14 +142,6 @@
   {
     'match': '\\b(declare|module|namespace|element|variable|base-uri|collation|import|construction|ordering|ordered|unordered|order|empty|greatest|least|function|preserve|no-preserve|inherit|no-inherit|strip|boundary-space|default|instance|option|copy-namespaces)\\b'
     'name': 'keyword.other.prolog.xquery'
-  }
-  {
-    'match': '(?<![:\\-_a-zA-Z0-9])(xdmp:(access|add-response-header|add64|amp|amp-roles|and64|apply|architecture|base64-decode|base64-encode|binary-decode|can-grant-roles|castable-as|collation-canonical-uri|collection-delete|collection-locks|collection-properties|crypt|current-last|current-position|database|database-backup|database-backup-cancel|database-backup-purge|database-backup-status|database-backup-validate|database-forests|database-name|database-restore|database-restore-cancel|database-restore-status|database-restore-validate|databases|default-collections|default-permissions|describe|diacritic-less|directory|directory-create|directory-delete|directory-locks|directory-properties|document-add-collections|document-add-permissions|document-add-properties|document-assign|document-delete|document-forest|document-get|document-get-collections|document-get-permissions|document-get-properties|document-get-quality|document-insert|document-load|document-locks|document-properties|document-remove-collections|document-remove-permissions|document-remove-properties|document-set-collections|document-set-permissions|document-set-properties|document-set-property|document-set-quality|elapsed-time|element-content-type|email|encoding-language-detect|estimate|eval|eval-in|excel-convert|exists|filesystem-directory|filesystem-directory-create|filesystem-file|forest|forest-backup|forest-clear|forest-counts|forest-databases|forest-name|forest-restart|forest-restore|forest-rollback|forest-status|forests|format-number|from-json|function|function-module|function-name|get|get-current-roles|get-current-user|get-request-body|get-request-client-address|get-request-client-certificate|get-request-field|get-request-field-content-type|get-request-field-filename|get-request-field-names|get-request-header|get-request-header-names|get-request-method|get-request-path|get-request-protocol|get-request-url|get-request-user|get-request-username|get-response-code|get-response-encoding|get-server-field|get-server-field-names|get-session-field|get-session-field-names|get-url-rewriter-path|group|group-hosts|group-name|group-servers|groups|has-privilege|hash32|hash64|hex-to-integer|host|host-name|host-status|hosts|http-delete|http-get|http-head|http-options|http-post|http-put|integer-to-hex|integer-to-octal|invoke|invoke-in|key-from-QName|load|lock-acquire|lock-for-update|lock-release|log|log-level|login|logout|lshift64|md5|merge|merge-cancel|merging|modules-database|modules-root|mul64|node-database|node-delete|node-insert-after|node-insert-before|node-insert-child|node-kind|node-replace|node-uri|not64|octal-to-integer|or64|parse-dateTime|parse-yymmdd|path|pdf-convert|permission|plan|platform|powerpoint-convert|pretty-print|privilege|privilege-roles|product-edition|QName-from-key|query-meters|query-trace|quote|random|redirect-response|request|request-cancel|request-status|request-timestamp|restart|rethrow|role|role-roles|rshift64|save|schema-database|security-assert|security-database|server|server-name|server-status|servers|set|set-request-time-limit|set-response-code|set-response-content-type|set-response-encoding|set-server-field|set-server-field-privilege|set-session-field|shutdown|sleep|spawn|spawn-in|step64|strftime|subbinary|tidy|to-json|trace|triggers-database|unpath|unquote|uri-content-type|uri-format|uri-is-file|url-decode|url-encode|user|user-last-login|user-roles|value|version|with-namespaces|word-convert|x509-certificate-extract|xor64|xquery-version|xslt-eval|xslt-invoke|zip-create|zip-get|zip-manifest))(?=\\s*\\()'
-    'name': 'support.function.marklogic.xquery'
-  }
-  {
-    'match': '(?<![:\\-_a-zA-Z0-9])(xdmp:([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*))'
-    'name': 'invalid.function.marklogic'
   }
   {
     'include': '#string'
