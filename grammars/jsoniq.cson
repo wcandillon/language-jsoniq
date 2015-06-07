@@ -102,18 +102,18 @@
 ]
 'repository':
     'Tag':
-        'begin': '<([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
+        'begin': '<([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)>'
         'end': '(\\/>|<\\/([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)\s*>)'
         'name': 'punctuation.definition.tag.jsoniq'
         'patterns': [
-            { 'include': 'TagContent' }
+            { 'include': '#TagContent' }
             {
                 'match': '([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
                 'name': 'entity.other.attribute-name.jsoniq'
             }
             {
                 'match': '=',
-                'name': 'text.jsoniq'
+                'name': 'source.gfm'
             }
             {
                 'begin': '\''
@@ -124,7 +124,13 @@
                         'match': '\'\''
                         'name': 'constant.jsoniq'
                     }
-                    { 'include': '#AttrString' }
+                    { 'include': '#PredefinedEntityRef' }
+                    { 'include': '#CharRef' }
+                    {
+                        'match': '({{|}})'
+                        'name': 'string.jsoniq'
+                    }
+                    { 'include': '#EnclosedExpr' }
                 ]
             }
             {
@@ -136,25 +142,28 @@
                         'match': '""'
                         'name': 'constant.jsoniq'
                     }
-                    { 'include': '#AttrString' }
+                    { 'include': '#PredefinedEntityRef' }
+                    { 'include': '#CharRef' }
+                    {
+                        'match': '({{|}})'
+                        'name': 'string.jsoniq'
+                    }
+                    { 'include': '#EnclosedExpr' }
                 ]
             }
         ]
     'TagContent':
-        'name': 'text.jsoniq'
+        'begin': '(?<=>).'
+        'end': '.(?=<)'
+        'name': 'source.gfm'
         'patterns': [
-            {
-                'match': '[^&<{}]'
-                'name': 'text.jsoniq'
-            }
             { 'include': '#XMLComment' }
-            { 'include': '#CDATA' }
             { 'include': '#Tag' }
             { 'include': '#PredefinedEntityRef' }
             { 'include': '#CharRef' }
             {
                 'match': '({{|}})'
-                'name': 'text.jsoniq'
+                'name': 'source.gfm'
             }
             { 'include': '#EnclosedExpr' }
         ]
@@ -175,8 +184,7 @@
     'EnclosedExpr':
         'begin': '{'
         'end': '}'
+        'name': 'source.gfm'
         'patterns': [
             { 'include': '$self' }
         ]
-    'AttrString':
-        'patterns': []
