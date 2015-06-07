@@ -64,27 +64,23 @@
         'name': 'meta.definition.variable.name.jsoniq'
     }
     {
-        'match': '\\b(?i:(\\d+\\.\\d*(e[\\-\\+]?\\d+)?))(?=[^a-zA-Z_])'
-        'name': 'constant.numeric.float.jsoniq'
-    }
-    {
-        'match': '(?<=[^0-9a-zA-Z_])(?i:(\\.\\d+(e[\\-\\+]?\\d+)?))'
-        'name': 'constant.numeric.float.jsoniq'
-    }
-    {
-        'match': '\\b(?i:(\\d+e[\\-\\+]?\\d+))'
-        'name': 'constant.numeric.float.jsoniq'
-    }
-    {
-        'match': '\\b([1-9]+[0-9]*|0)'
-        'name': 'constant.numeric.integer.decimal.jsoniq'
-    }
-    {
         'match': '(?<![:\\-_a-zA-Z0-9])(\\+|-|<=?|>=?|\\*)(?![:\\-_a-zA-Z0-9])'
         'name': 'keyword.operator.jsoniq'
     }
     {
-        'match': 'NaN|after|allowing|ancestor|ancestor-or-self|and|append|array|as|ascending|at|attribute|base-uri|before|boundary-space|break|by|case|cast|castable|catch|child|collation|comment|constraint|construction|contains|context|continue|copy|copy-namespaces|count|decimal-format|decimal-separator|declare|default|delete|descendant|descendant-or-self|descending|digit|div|document|document-node|element|else|empty|empty-sequence|encoding|end|eq|every|except|exit|external|false|first|following|following-sibling|for|from|ft-option|function|ge|greatest|group|grouping-separator|gt|idiv|if|import|in|index|infinity|insert|instance|integrity|intersect|into|is|item|json|json-item|jsoniq|last|lax|le|least|let|loop|lt|minus-sign|mod|modify|module|namespace|namespace-node|ne|next|node|nodes|not|null|object|of|only|option|or|order|ordered|ordering|paragraphs|parent|pattern-separator|per-mille|percent|preceding|preceding-sibling|previous|processing-instruction|rename|replace|return|returning|revalidation|satisfies|schema|schema-attribute|schema-element|score|select|self|sentences|sliding|some|stable|start|strict|switch|text|then|times|to|treat|true|try|tumbling|type|typeswitch|union|unordered|updating|validate|value|variable|version|when|where|while|window|with|words|xquery|zero-digit'
+        'match': '(\\.[0-9]+|[0-9]+(\\.[0-9]*)?)[Ee][+#x002D]?[0-9]+'
+        'name': 'constant.numeric.jsoniq'
+    }
+    {
+        'match': '(\\.[0-9]+|[0-9]+\\.[0-9]*)'
+        'name': 'constant.numeric.jsoniq'
+    }
+    {
+        'match': '[0-9]+'
+        'name': 'constant.numeric.jsoniq'
+    }
+    {
+        'match': '\\b(NaN|after|allowing|ancestor|ancestor-or-self|and|append|array|as|ascending|at|attribute|base-uri|before|boundary-space|break|by|case|cast|castable|catch|child|collation|comment|constraint|construction|contains|context|continue|copy|copy-namespaces|count|decimal-format|decimal-separator|declare|default|delete|descendant|descendant-or-self|descending|digit|div|document|document-node|element|else|empty|empty-sequence|encoding|end|eq|every|except|exit|external|false|first|following|following-sibling|for|from|ft-option|function|ge|greatest|group|grouping-separator|gt|idiv|if|import|in|index|infinity|insert|instance|integrity|intersect|into|is|item|json|json-item|jsoniq|last|lax|le|least|let|loop|lt|minus-sign|mod|modify|module|namespace|namespace-node|ne|next|node|nodes|not|null|object|of|only|option|or|order|ordered|ordering|paragraphs|parent|pattern-separator|per-mille|percent|preceding|preceding-sibling|previous|processing-instruction|rename|replace|return|returning|revalidation|satisfies|schema|schema-attribute|schema-element|score|select|self|sentences|sliding|some|stable|start|strict|switch|text|then|times|to|treat|true|try|tumbling|type|typeswitch|union|unordered|updating|validate|value|variable|version|when|where|while|window|with|words|xquery|zero-digit)\\b'
         'name': 'keyword.jsoniq'
     }
     {
@@ -103,18 +99,15 @@
     {
         'include': '#Tag'
     }
-    {
-        'match': '\b(NaN|after|allowing|ancestor|ancestor-or-self|and|append|array|as|ascending|at|attribute|base-uri|before|boundary-space|break|by|case|cast|castable|catch|child|collation|comment|constraint|construction|contains|context|continue|copy|copy-namespaces|count|decimal-format|decimal-separator|declare|default|delete|descendant|descendant-or-self|descending|digit|div|document|document-node|element|else|empty|empty-sequence|encoding|end|eq|every|except|exit|external|false|first|following|following-sibling|for|from|ft-option|function|ge|greatest|group|grouping-separator|gt|idiv|if|import|in|index|infinity|insert|instance|integrity|intersect|into|is|item|json|json-item|jsoniq|last|lax|le|least|let|loop|lt|minus-sign|mod|modify|module|namespace|namespace-node|ne|next|node|nodes|not|null|object|of|only|option|or|order|ordered|ordering|paragraphs|parent|pattern-separator|per-mille|percent|preceding|preceding-sibling|previous|processing-instruction|rename|replace|return|returning|revalidation|satisfies|schema|schema-attribute|schema-element|score|select|self|sentences|sliding|some|stable|start|strict|switch|text|then|times|to|treat|true|try|tumbling|type|typeswitch|union|unordered|updating|validate|value|variable|version|when|where|while|window|with|words|xquery|zero-digit)\b'
-        'name': 'keyword.jsoniq'
-    }
 ]
 'repository':
     'Tag':
-        'match': '<([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
+        'begin': '<([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
+        'end': '(\\/>|<\\/([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)\s*>)'
         'name': 'punctuation.definition.tag.jsoniq'
         'patterns': [
             {
-                'match': '>'
+                'begin': '>'
                 'name': 'punctuation.definition.tag.jsoniq'
                 'patterns': [{ 'include': 'TagContent' }]
             }
@@ -122,13 +115,9 @@
                 'match': '([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
                 'name': 'entity.other.attribute-name.jsoniq'
             }
-            {
-                'match': '/>'
-                'name': 'punctuation.definition.tag.jsoniq'
-                'patterns': [{ 'include': '#self' }]
-            }
         ]
     'TagContent':
+        'name': 'text.jsoniq'
         'patterns': [
             {
                 'match': '[^&<{}]'
