@@ -106,14 +106,38 @@
         'end': '(\\/>|<\\/([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)\s*>)'
         'name': 'punctuation.definition.tag.jsoniq'
         'patterns': [
-            {
-                'begin': '>'
-                'name': 'punctuation.definition.tag.jsoniq'
-                'patterns': [{ 'include': 'TagContent' }]
-            }
+            { 'include': 'TagContent' }
             {
                 'match': '([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
                 'name': 'entity.other.attribute-name.jsoniq'
+            }
+            {
+                'match': '=',
+                'name': 'text.jsoniq'
+            }
+            {
+                'begin': '\''
+                'end': '\'(?!\')'
+                'name': 'string.jsoniq'
+                'patterns': [
+                    {
+                        'match': '\'\''
+                        'name': 'constant.jsoniq'
+                    }
+                    { 'include': '#AttrString' }
+                ]
+            }
+            {
+                'begin': '"'
+                'end': '"(?!")'
+                'name': 'string.jsoniq'
+                'patterns': [
+                    {
+                        'match': '""'
+                        'name': 'constant.jsoniq'
+                    }
+                    { 'include': '#AttrString' }
+                ]
             }
         ]
     'TagContent':
@@ -154,3 +178,5 @@
         'patterns': [
             { 'include': '$self' }
         ]
+    'AttrString':
+        'patterns': []
