@@ -27,6 +27,15 @@
         'include': '#XMLComment'
     }
     {
+        'include': '#CDATA'
+    }
+    {
+        'include': '#PredefinedEntityRef'
+    }
+    {
+        'include': '#CharRef'
+    }
+    {
         'begin': '<\\?'
         'end': '\\?>'
         'name': 'comment.jsoniq'
@@ -64,10 +73,6 @@
         'name': 'meta.definition.variable.name.jsoniq'
     }
     {
-        'match': '(?<![:\\-_a-zA-Z0-9])(\\+|-|<=?|>=?|\\*)(?![:\\-_a-zA-Z0-9])'
-        'name': 'keyword.operator.jsoniq'
-    }
-    {
         'match': '(\\.[0-9]+|[0-9]+(\\.[0-9]*)?)[Ee][+#x002D]?[0-9]+'
         'name': 'constant.numeric.jsoniq'
     }
@@ -85,7 +90,7 @@
     }
     {
         'comment': 'EQName'
-        'match': '([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
+        'match': '([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)(?=\s*\\()'
         'name': 'support.function.jsoniq'
     }
     {
@@ -97,16 +102,18 @@
         'name': 'rparent.jsoniq'
     }
     {
-        'include': '#Tag'
+        'include': '#OpenTag'
+    }
+    {
+        'include': '#CloseTag'
     }
 ]
 'repository':
-    'Tag':
+    'OpenTag':
         'begin': '<([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
-        'end': '(\\/>|<\\/([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)\s*>)'
+        'end': '(\\/>|>)'
         'name': 'punctuation.definition.tag.jsoniq'
         'patterns': [
-            { 'include': '#TagContent' }
             {
                 'match': '([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)'
                 'name': 'entity.other.attribute-name.jsoniq'
@@ -152,27 +159,9 @@
                 ]
             }
         ]
-    'TagContent':
-        'begin': '>'
-        'end': '.?(?=<)(?!<!--)(?!<!\\[CDATA\\[)'
-        'beginCaptures':
-            '0':
-                'name': 'punctuation.definition.tag.jsoniq'
-        'endCaptures':
-            '0':
-                'name': 'source.gfm'
-        'contentName': 'source.gfm'
-        'patterns': [
-            { 'include': '#XMLComment' }
-            { 'include': '#CDATA '}
-            { 'include': '#PredefinedEntityRef' }
-            { 'include': '#CharRef' }
-            {
-                'match': '({{|}})'
-                'name': 'source.gfm'
-            }
-            { 'include': '#EnclosedExpr' }
-        ]
+    'CloseTag':
+        'match': '<\\/([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)>'
+        'name':  'punctuation.definition.tag.jsoniq'
     'XMLComment':
         'begin': '<!--'
         'end': '-->'
