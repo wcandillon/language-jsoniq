@@ -1,4 +1,4 @@
-jsoniq version "1.0";
+xquery version "1.0";
 
 declare namespace return = "http://www.example.com/";
 

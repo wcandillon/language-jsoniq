@@ -8,8 +8,8 @@
 'name': 'JSONiq'
 'patterns': [
     {
-        'begin': '\\bxquery\\s+version\\s+;'
-        'name': 'keyword.jsoniq'
+        'begin': '^(?=xquery\\s+version\\s+)'
+        'end': '\\z'
         'patterns': [
             'include': 'source.xq'
         ]

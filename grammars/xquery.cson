@@ -12,8 +12,10 @@
 'name': 'XQuery'
 'patterns': [
     {
-        'begin': '\\bjsoniq\\s+version\\s+;'
-        'name': 'keyword.xquery'
+        'begin': '^(?=jsoniq\\s+version\\s+)'
+        'end': '\\z'
+        'beginCaptures':
+            '0': 'keyword.jsoniq'
         'patterns': [
             'include': 'source.jq'
         ]
