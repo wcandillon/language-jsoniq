@@ -1,3 +1,5 @@
+jsoniq version "1.0";
+
 declare namespace return = "http://www.example.com/";
 
 for $i in (112e12 to 10)

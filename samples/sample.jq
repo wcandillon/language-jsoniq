@@ -1,6 +1,8 @@
+xquery version "1.0";
+
 for $i in (112e12 to 10)
 let $foo := return:bar($i)
-return as-return-foo("fooo\nsdfsdfsdfsd"),
+return as-return-foo("fooo\nsdfsdfsdfsd"), 'asdasd',
 <foo>hello</bar>,
 <foo bar="""he{{1 + 1}}ll{1 + 1, let $foo := 1 return <foo bar="hello" />}o""" hello='''hello''' />,
 <foo:bar>sad <!-- asdsa -->dasda<foo>hello</foo>&amp;&#162;sdas </foo:bar>,
