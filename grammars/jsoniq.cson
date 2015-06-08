@@ -2,11 +2,18 @@
 'fileTypes': [
   'jq'
 ]
-'firstLineMatch': '^\\bjsoniq version\\b.*'
+'firstLineMatch': '^\\bjsoniq\\s+version\\b.*'
 'foldingStartMarker': '^\\s*(<[^!?%/](?!.+?(/>|</.+?>))|<[!%]--(?!.+?--%?>)|<%[!]?(?!.+?%>))|(declare|.*\\{\\s*(//.*)?$)'
 'foldingStopMarker': '^\\s*(</[^>]+>|[/%]>|-->)\\s*$|(.*\\}\\s*;?\\s*|.*;)'
 'name': 'JSONiq'
 'patterns': [
+    {
+        'begin': '^(?=xquery\\s+version\\s+)'
+        'end': '\\z'
+        'patterns': [
+            'include': 'source.xq'
+        ]
+    }
     {
         'begin': '\\(#'
         'end': '#\\)'

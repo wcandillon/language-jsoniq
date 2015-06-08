@@ -6,11 +6,20 @@
   'xqy'
   'xquery'
 ]
-'firstLineMatch': '^\\bxquery version\\b.*'
+'firstLineMatch': '^\\bxquery\\s+version\\b.*'
 'foldingStartMarker': '^\\s*(<[^!?%/](?!.+?(/>|</.+?>))|<[!%]--(?!.+?--%?>)|<%[!]?(?!.+?%>))|(declare|.*\\{\\s*(//.*)?$)'
 'foldingStopMarker': '^\\s*(</[^>]+>|[/%]>|-->)\\s*$|(.*\\}\\s*;?\\s*|.*;)'
 'name': 'XQuery'
 'patterns': [
+    {
+        'begin': '^(?=jsoniq\\s+version\\s+)'
+        'end': '\\z'
+        'beginCaptures':
+            '0': 'keyword.jsoniq'
+        'patterns': [
+            'include': 'source.jq'
+        ]
+    }
     {
         'begin': '\\(#'
         'end': '#\\)'
