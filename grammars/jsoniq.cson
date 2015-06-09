@@ -167,7 +167,7 @@
             }
         ]
     'CloseTag':
-        'match': '<\\/([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)>'
+        'match': '<\\/([\\-_a-zA-Z0-9][\\-\\._a-zA-Z0-9]*:)?([\\-_a-zA-Z0-9][\\-_a-zA-Z0-9]*)\\s*>'
         'name':  'punctuation.definition.tag.jsoniq'
     'XMLComment':
         'begin': '<!--'
