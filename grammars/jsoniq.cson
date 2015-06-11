@@ -127,7 +127,7 @@
             }
             {
                 'match': '=',
-                'name': 'source.gfm'
+                'name': 'source.jq'
             }
             {
                 'begin': '\''
@@ -186,7 +186,7 @@
     'EnclosedExpr':
         'begin': '{'
         'end': '}'
-        'name': 'source.gfm'
+        'name': 'source.jq'
         'patterns': [
             { 'include': '$self' }
         ]
