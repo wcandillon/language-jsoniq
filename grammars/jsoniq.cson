@@ -142,7 +142,7 @@
                     { 'include': '#CharRef' }
                     {
                         'match': '({{|}})'
-                        'name': 'string.jsoniq'
+                        'name': 'constant.jsoniq'
                     }
                     { 'include': '#EnclosedExpr' }
                 ]

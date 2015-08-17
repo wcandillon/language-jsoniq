@@ -175,7 +175,7 @@
                     { 'include': '#CharRef' }
                     {
                         'match': '({{|}})'
-                        'name': 'string.xquery'
+                        'name': 'constant.xquery'
                     }
                     { 'include': '#EnclosedExpr' }
                 ]
