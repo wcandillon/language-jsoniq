@@ -7,6 +7,10 @@ The syntax highlighting and error reporting is provided by [XQLint](https://gith
 ## Installation
 [Linter](https://github.com/AtomLinter/Linter) package must be installed in order to use this plugin. If Linter is not installed, please follow the instructions [here](https://github.com/AtomLinter/Linter).
 
+```bash
+$apm install linter language-jsoniq
+```
+
 ## Syntax Highlighting, Warnings, and Errors
 ![example](http://i.imgur.com/86jU7C1.png)
 
