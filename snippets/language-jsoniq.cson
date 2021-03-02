@@ -1,4 +1,4 @@
-'.source.jq':
+'.source.jsoniq':
   'for':
     'prefix': 'for'
     'body': 'for $${1:item} in ${2:expr}${3}'
