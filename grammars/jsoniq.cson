@@ -1,4 +1,4 @@
-'scopeName': 'source.jq'
+'scopeName': 'source.jsoniq'
 'fileTypes': [
   'jq'
 ]

@@ -15,7 +15,7 @@
         'begin': '^(?=jsoniq\\s+version\\s+)'
         'end': '\\z'
         'patterns': [
-            'include': 'source.jq'
+            'include': 'source.jsoniq'
         ]
     }
     {
@@ -142,7 +142,7 @@
             }
             {
                 'match': '=',
-                'name': 'source.jq'
+                'name': 'source.jsoniq'
             }
             {
                 'begin': '\''
