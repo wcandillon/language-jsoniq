@@ -1,4 +1,4 @@
-'.source.xq':
-  'editor':
-    'commentStart': '(: '
-    'commentEnd': ' :)'
+".source.jsoniq, .source.xq":
+	editor:
+		commentStart: "(: "
+		commentEnd:   " :)"
